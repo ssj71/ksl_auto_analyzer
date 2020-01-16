@@ -23,15 +23,10 @@ page = urllib.request.urlopen(req)
 #print(page.read())
 data = page.read().decode('utf-8')
 prices = [int(m.group()) for m in re.finditer('(?<=class="listing-detail-line price" data-price=")(\d+)(?=")',data)]
-#miles = [int(m.group()) for m in re.finditer('(?<=class="listing-detail-line mileage"> Mileage: )(\d+)(?=</div>)',data)]
-miles = [int(m.group()) for m in re.finditer('(?<=Mileage: )(\d+)',data)]
+miles = [int(m.group().replace(",","")) for m in re.finditer('(?<=Mileage: )\d{1,3}(,\d{3})*',data)]
 
 print(miles,prices)
 exit()
-top100 = top[0::3]
-#topstring = [m.group() for m in re.finditer('(?:href="/boardgame/)(\d+)(?:/)',data)]
-#for i in range(0,10):
-#    print(top[i],topstring[3*i])
 
 top1000 = top100
 
