@@ -9,9 +9,13 @@ import matplotlib.pyplot
 import sys
 import time
 
-make = "Toyota"
-model = "Corolla"
+if(len(sys.argv) != 3):
+    print("run with command ksl_auto_analyzer <Make> <Model>")
+    exit()
+make = sys.argv[1]
+model = sys.argv[2]
 url = "https://cars.ksl.com/search/index?make[]="+make+"&model[]="+model+"&page="
+#url = "https://cars.ksl.com/search/index?body=Van&keyword=passenger&page="
 hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
